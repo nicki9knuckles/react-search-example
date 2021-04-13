@@ -10,7 +10,6 @@ export function FiltersContextProvider(props) {
   const [currentFilters, setFilters] = useState([])
 
   function addFilterHandler(newFilter) {
-    console.log('addFilterHandler', newFilter)
     setFilters((prevFilters) => {
       return prevFilters.concat(newFilter)
     })
@@ -23,8 +22,6 @@ export function FiltersContextProvider(props) {
   }
 
   function hasFilterHandler(newFilter) {
-    console.log('newFilter', newFilter)
-    console.log('currentFilters', currentFilters)
     return currentFilters.some((filter) => newFilter === filter)
   }
 

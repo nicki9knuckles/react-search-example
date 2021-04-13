@@ -1,3 +1,4 @@
+import './App.css'
 import SearchBar from './components/SearchBar'
 import SearchResults from './components/SearchResults'
 import { useState } from 'react'
@@ -6,15 +7,19 @@ import FilterList from './components/FilterList'
 function App() {
   const [loadedSearchResults, setSearchResults] = useState([])
 
-  function onSearchHandler(searchResults) {
-    setSearchResults(searchResults)
-  }
   return (
     <div className='App'>
-      <SearchBar onSearch={onSearchHandler} />
+      <div className='search-bar'>
+        <SearchBar onSearch={setSearchResults} />
+      </div>
 
-      <FilterList />
-      <SearchResults results={loadedSearchResults}></SearchResults>
+      <div className='filter-list'>
+        <FilterList />
+      </div>
+
+      <div className='search-results'>
+        <SearchResults results={loadedSearchResults}></SearchResults>
+      </div>
     </div>
   )
 }

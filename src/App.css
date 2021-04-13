@@ -1,0 +1,42 @@
+.search-bar input {
+  width: 80%;
+  height: 30px;
+}
+
+.search-bar button {
+  height: 36px;
+  width: 18%;
+}
+
+.search-bar ul {
+  padding: 0;
+}
+.search-bar li {
+  display: inline-block;
+  padding: 3px;
+  background: grey;
+  color: white;
+  margin: 2px;
+}
+
+.filter-list {
+  float: left;
+  width: 30%;
+}
+
+.filter-list ul {
+  padding: 0;
+}
+
+.search-results {
+  float: right;
+  width: 60%;
+}
+
+.search-results ul {
+  padding: 0;
+}
+
+.search-results button {
+  margin: 3px;
+}

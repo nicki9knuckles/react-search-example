@@ -6,10 +6,11 @@ function SearchFilters(props) {
 
   return (
     <div>
-      <h1>Your Current Filters</h1>
+      {filtersCtx.currentFilters.length > 0 && <h4>Current Filters:</h4>}
+
       <ul>
         {filtersCtx.currentFilters.map((filter, i) => (
-          <li id={i}>{filter}</li>
+          <li key={i}>{filter}</li>
         ))}
       </ul>
     </div>

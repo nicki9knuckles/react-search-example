@@ -1,32 +1,39 @@
-import { useContext } from 'react'
-import FiltersContext from '../store/filters-context'
+import { useEffect, useState } from 'react'
+import Filter from './Filter'
 
 function FilterList(props) {
-  const filtersCtx = useContext(FiltersContext)
+  const [loadedFilters, setLoadedFilters] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  function toggleFilterHandler(params) {
-    if (filtersCtx.hasFilter(params)) {
-      filtersCtx.removeFilter(params)
-    } else {
-      filtersCtx.addFilter(params)
-    }
+  useEffect(() => {
+    setIsLoading(true)
+    fetch(
+      'https://6074ca42066e7e0017e7a576.mockapi.io/api/AllCities?sortBy=country'
+    )
+      .then((response) => {
+        return response.json()
+      })
+      .then((data) => {
+        setIsLoading(false)
+        setLoadedFilters(data)
+      })
+  }, [])
+
+  if (isLoading) {
+    return (
+      <section>
+        <p>Loading....</p>
+      </section>
+    )
   }
+
   return (
     <div>
       <h1>Filter List</h1>
       <ul>
-        <li>
-          <button onClick={() => toggleFilterHandler('burger')}>burger</button>
-        </li>
-        <li>
-          <button onClick={() => toggleFilterHandler('fries')}>fries</button>
-        </li>
-        <li>
-          <button onClick={() => toggleFilterHandler('coke')}>coke</button>
-        </li>
-        <li>
-          <button onClick={() => toggleFilterHandler('shake')}>shake</button>
-        </li>
+        {loadedFilters.map((filter) => (
+          <Filter key={filter.id} country={filter.country} />
+        ))}
       </ul>
     </div>
   )

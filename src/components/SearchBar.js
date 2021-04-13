@@ -8,7 +8,7 @@ function SearchBar(props) {
     e.preventDefault()
 
     fetch(
-      'https://6074ca42066e7e0017e7a576.mockapi.io/api/reactSearchExample?title=' +
+      'https://6074ca42066e7e0017e7a576.mockapi.io/api/reactSearchExample?sortBy=country&country=' +
         searchTermRef.current.value
     )
       .then((response) => {
