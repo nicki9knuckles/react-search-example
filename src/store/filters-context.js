@@ -6,7 +6,7 @@ const FiltersContext = createContext({
   addFilter: (newFilter) => {},
   removeFilter: (filterToDelete) => {},
 })
-export function FiltersContextProvider(props) {
+export function FiltersContextProvider({ children }) {
   const [currentFilters, setFilters] = useState([])
 
   function addFilterHandler(newFilter) {
@@ -34,7 +34,7 @@ export function FiltersContextProvider(props) {
 
   return (
     <FiltersContext.Provider value={context}>
-      {props.children}
+      {children}
     </FiltersContext.Provider>
   )
 }

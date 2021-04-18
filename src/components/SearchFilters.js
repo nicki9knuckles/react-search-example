@@ -1,15 +1,15 @@
 import { useContext } from 'react'
 import FiltersContext from '../store/filters-context'
 
-function SearchFilters(props) {
-  const filtersCtx = useContext(FiltersContext)
+function SearchFilters() {
+  const { currentFilters } = useContext(FiltersContext)
 
   return (
     <div>
-      {filtersCtx.currentFilters.length > 0 && <h4>Current Filters:</h4>}
+      {currentFilters.length > 0 && <h4>Current Filters:</h4>}
 
       <ul>
-        {filtersCtx.currentFilters.map((filter, i) => (
+        {currentFilters.map((filter, i) => (
           <li key={i}>{filter}</li>
         ))}
       </ul>

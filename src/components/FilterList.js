@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Filter from './Filter'
 
-function FilterList(props) {
+function FilterList() {
   const [loadedFilters, setLoadedFilters] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -31,8 +31,8 @@ function FilterList(props) {
     <div>
       <h1>Filter List</h1>
       <ul>
-        {loadedFilters.map((filter) => (
-          <Filter key={filter.id} country={filter.country} />
+        {loadedFilters.map(({ id, country }) => (
+          <Filter key={id} country={country} />
         ))}
       </ul>
     </div>

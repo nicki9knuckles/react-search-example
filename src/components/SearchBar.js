@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import SearchFilters from './SearchFilters'
 
-function SearchBar(props) {
+function SearchBar({ onSearch }) {
   const searchTermRef = useRef()
 
   function searchHandler(e) {
@@ -15,7 +15,7 @@ function SearchBar(props) {
         return response.json()
       })
       .then((data) => {
-        props.onSearch(data)
+        onSearch(data)
       })
   }
 

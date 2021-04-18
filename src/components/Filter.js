@@ -1,17 +1,17 @@
 import { useContext } from 'react'
 import FiltersContext from '../store/filters-context'
 
-function Filter(props) {
-  const filtersCtx = useContext(FiltersContext)
+function Filter({ country }) {
+  const { hasFilter, removeFilter, addFilter } = useContext(FiltersContext)
 
   function toggleFilterHandler() {
-    if (filtersCtx.hasFilter(props.country)) {
-      filtersCtx.removeFilter(props.country)
+    if (hasFilter(country)) {
+      removeFilter(country)
     } else {
-      filtersCtx.addFilter(props.country)
+      addFilter(country)
     }
   }
 
-  return <button onClick={toggleFilterHandler}>{props.country}</button>
+  return <button onClick={toggleFilterHandler}>{country}</button>
 }
 export default Filter

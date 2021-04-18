@@ -2,24 +2,24 @@ import { useContext, useState, useEffect } from 'react'
 import FiltersContext from '../store/filters-context'
 
 function SearchResults({ results }) {
-  const filtersCtx = useContext(FiltersContext)
+  const { currentFilters } = useContext(FiltersContext)
   const [allResults, setAllResults] = useState([])
 
   useEffect(() => {
     const tempResults = []
     results.map((data) => {
-      if (filtersCtx.currentFilters.length === 0) {
+      if (currentFilters.length === 0) {
         return tempResults.push(data)
       }
 
-      if (filtersCtx.currentFilters.indexOf(data.country) !== -1) {
+      if (currentFilters.indexOf(data.country) !== -1) {
         return tempResults.push(data)
       }
 
       return false
     })
     setAllResults(tempResults)
-  }, [results, filtersCtx.currentFilters])
+  }, [results, currentFilters])
 
   return (
     <div>
